@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dinq3y1dj7v2a"]
+[gd_scene load_steps=13 format=3 uid="uid://dinq3y1dj7v2a"]
 
 [ext_resource type="Texture2D" uid="uid://c0ojtw5mu2vrr" path="res://Art/LeftBumper.png" id="1_a71av"]
-[ext_resource type="Script" path="res://Buttons/LeftBumper.gd" id="2_eo2u1"]
 
 [sub_resource type="Animation" id="Animation_xrlxe"]
 length = 0.001
@@ -83,7 +82,6 @@ texture_filter = 1
 position = Vector2(406, 410)
 texture = ExtResource("1_a71av")
 hframes = 3
-script = ExtResource("2_eo2u1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

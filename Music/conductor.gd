@@ -39,14 +39,12 @@ func play_from_beat(beat, off):
 	current_measure = beat % measures
 
 func play_with_beat_offset(num):
-	print(str(bpm) + "foo")
 	offset = num
 	$StartTimer.wait_time = 60 / bpm
 	$StartTimer.start()
 	
 
 func _on_start_timer_timeout():
-	print("timeout")
 	song_position_in_beats += 1
 	if song_position_in_beats < offset - 1:
 		$StartTimer.start()

@@ -46,7 +46,6 @@ func _physics_process(_delta):
 	
 
 func button_animation(button, state_machine):
-	print(button)
 	if(Input.get_action_strength(button) > 0 and state_machine.get_current_node() != "press"):
 		state_machine.travel("press")
 	else:
@@ -54,7 +53,6 @@ func button_animation(button, state_machine):
 	
 
 func _on_conductor_beat(position):
-	print("beat")
 	song_position_in_beats = position
 	if song_position_in_beats > 36:
 		spawn_1_beat = 1
@@ -124,7 +122,6 @@ func _on_conductor_measure(position):
 		_spawn_notes(spawn_4_beat)
 
 func _spawn_notes(_to_spawn):
-	print("foo")
 	lane = randi() % 5
 	instance = note.instantiate()
 	instance.initialize(lane)
