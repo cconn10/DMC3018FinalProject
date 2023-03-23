@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu5v3ku1a40h6"]
+
+[ext_resource type="Script" path="res://Objects/Note.gd" id="1_4ej2g"]
+[ext_resource type="Texture2D" uid="uid://cnbp5kfrt3gvp" path="res://Art/Targets.png" id="2_ff0b5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mgpwh"]
+radius = 8.0
+
+[node name="Note" type="Area2D"]
+script = ExtResource("1_4ej2g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mgpwh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ff0b5")
+hframes = 4
+vframes = 4

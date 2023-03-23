@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://dyxabcowpxnir"]
+
+[ext_resource type="Texture2D" uid="uid://g4in6e2xwy62" path="res://Art/Button.png" id="1_fyvh7"]
+
+[sub_resource type="Animation" id="Animation_xrlxe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_g6iik"]
+resource_name = "press"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_q1312"]
+resource_name = "unpress"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x5gj6"]
+_data = {
+"RESET": SubResource("Animation_xrlxe"),
+"press": SubResource("Animation_g6iik"),
+"unpress": SubResource("Animation_q1312")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f7x7u"]
+animation = &"press"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_26wmb"]
+animation = &"unpress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lm5qq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5naym"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xf3ak"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vdcok"]
+states/press/node = SubResource("AnimationNodeAnimation_f7x7u")
+states/press/position = Vector2(355, 100)
+states/unpress/node = SubResource("AnimationNodeAnimation_26wmb")
+states/unpress/position = Vector2(543, 100)
+transitions = ["press", "unpress", SubResource("AnimationNodeStateMachineTransition_lm5qq"), "unpress", "press", SubResource("AnimationNodeStateMachineTransition_5naym"), "Start", "press", SubResource("AnimationNodeStateMachineTransition_xf3ak")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_nutah"]
+
+[node name="Buttons" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(406, 410)
+texture = ExtResource("1_fyvh7")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x5gj6")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_vdcok")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_nutah")

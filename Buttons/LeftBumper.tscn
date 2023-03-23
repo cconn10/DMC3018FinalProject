@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://dinq3y1dj7v2a"]
+
+[ext_resource type="Texture2D" uid="uid://c0ojtw5mu2vrr" path="res://Art/LeftBumper.png" id="1_a71av"]
+[ext_resource type="Script" path="res://Buttons/LeftBumper.gd" id="2_eo2u1"]
+
+[sub_resource type="Animation" id="Animation_xrlxe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_g6iik"]
+resource_name = "press"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_q1312"]
+resource_name = "unpress"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x5gj6"]
+_data = {
+"RESET": SubResource("Animation_xrlxe"),
+"press": SubResource("Animation_g6iik"),
+"unpress": SubResource("Animation_q1312")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f7x7u"]
+animation = &"press"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_26wmb"]
+animation = &"unpress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lm5qq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5naym"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xf3ak"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vdcok"]
+states/press/node = SubResource("AnimationNodeAnimation_f7x7u")
+states/press/position = Vector2(353, 100)
+states/unpress/node = SubResource("AnimationNodeAnimation_26wmb")
+states/unpress/position = Vector2(499, 100)
+transitions = ["press", "unpress", SubResource("AnimationNodeStateMachineTransition_lm5qq"), "unpress", "press", SubResource("AnimationNodeStateMachineTransition_5naym"), "Start", "press", SubResource("AnimationNodeStateMachineTransition_xf3ak")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_nutah"]
+
+[node name="LeftBumper" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(406, 410)
+texture = ExtResource("1_a71av")
+hframes = 3
+script = ExtResource("2_eo2u1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x5gj6")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_vdcok")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_nutah")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjxjs5pah2k37"]
+
+[ext_resource type="AudioStream" uid="uid://3tspri7aveo8" path="res://Music/Prototype_song.mp3" id="1_jw2sm"]
+[ext_resource type="Script" path="res://Music/conductor.gd" id="1_w1ghs"]
+
+[node name="Conductor" type="AudioStreamPlayer"]
+stream = ExtResource("1_jw2sm")
+volume_db = -29.12
+script = ExtResource("1_w1ghs")
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
