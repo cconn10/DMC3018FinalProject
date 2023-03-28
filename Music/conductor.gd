@@ -5,16 +5,16 @@ extends AudioStreamPlayer
 
 var song_position = 0.0
 var song_position_in_beats = 1
-var crotchet = 60 / bpm
 var last_reported_beat = 0
 var offset = 0
 var current_measure = 1
+var crotchet
 
 signal beat(position)
 signal measure(position)
 
 func _ready():
-	crotchet = 60 / bpm
+	crotchet = 60.0 / bpm
 
 func _physics_process(_delta):
 	if playing:
@@ -40,7 +40,7 @@ func play_from_beat(beat, off):
 
 func play_with_beat_offset(num):
 	offset = num
-	$StartTimer.wait_time = 60 / bpm
+	$StartTimer.wait_time = 60.0 / bpm
 	$StartTimer.start()
 	
 

@@ -43,6 +43,5 @@ func initialize(lane):
 	speed = DIST_TO_TARGET / 2.0
 	
 func destroy():
-	print("destroy")
 	$Sprite2D.visible = false
 	hit = true

@@ -8,16 +8,48 @@ extends Node2D
 
 @onready var audio_stream = $Conductor
 
-#00001 (1) = RT
-#00010 (2) = RB
+#00001 (1) = RB
+#00010 (2) = RT
 #00100 (4) = BUTTON
-#01000 (8) = LB
-#10000 (16) = LT
-var song = []
+#01000 (8) = LT
+#10000 (16) = LB
+var song = [
+0,0,0,0,
+0,0,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,4,4,
+4,4,4,4,
+4,4,4,4,
+4,4,4,4,
+4,4,1,1,
+16,16,1,16,
+16,1,16,16,
+16,1,16,16,
+1,1,2,2,
+8,8,2,2,
+8,8,2,2,
+8,8,2,2,
+8,8,2,8,
+2,8,4,4,
+4,4,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,2,8,
+2,8,2
+]
 
 var bpm = 120
 var offset = 0.2
-var crochet
+var crotchet
 var lastbeat
 var songposition
 var song_position_in_beats = 0
@@ -34,8 +66,8 @@ var instance
 
 func _ready():
 	lastbeat = 0
-	crochet = 60 / bpm
-	$Conductor.play_with_beat_offset(8)
+	crotchet = 60 / bpm
+	$Conductor.play_from_beat(120, 2)
 
 func _physics_process(_delta):
 	button_animation("leftbumper", lb_state_machine)
@@ -54,77 +86,36 @@ func button_animation(button, state_machine):
 
 func _on_conductor_beat(position):
 	song_position_in_beats = position
-	if song_position_in_beats > 36:
-		spawn_1_beat = 1
-		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 98:
-		spawn_1_beat = 0
-		spawn_2_beat = 0
-		spawn_3_beat = 1
-		spawn_4_beat = 0
-	if song_position_in_beats > 132:
-		spawn_1_beat = 0
-		spawn_2_beat = 1
-		spawn_3_beat = 0
-		spawn_4_beat = 1
-	if song_position_in_beats > 162:
-		spawn_1_beat = 1
-		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 194:
-		spawn_1_beat = 1
-		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 228:
-		spawn_1_beat = 0
-		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 258:
-		spawn_1_beat = 1
-		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 288:
-		spawn_1_beat = 0
-		spawn_2_beat = 1
-		spawn_3_beat = 0
-		spawn_4_beat = 1
-	if song_position_in_beats > 322:
-		spawn_1_beat = 1
-		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 388:
-		spawn_1_beat = 1
-		spawn_2_beat = 0
-		spawn_3_beat = 0
-		spawn_4_beat = 0
-	if song_position_in_beats > 396:
-		spawn_1_beat = 0
-		spawn_2_beat = 0
-		spawn_3_beat = 0
-		spawn_4_beat = 0
+	print(position)
+	if position < len(song):
+		_spawn_notes(song[position])
+	
 
+#func _on_conductor_measure(position):
+#	if position == 1:
+#		_spawn_notes(spawn_1_beat)
+#	elif position == 2:
+#		_spawn_notes(spawn_2_beat)
+#	elif position == 3:
+#		_spawn_notes(spawn_3_beat)
+#	elif position == 4:
+#		_spawn_notes(spawn_4_beat)
 
-func _on_conductor_measure(position):
-	if position == 1:
-		_spawn_notes(spawn_1_beat)
-	elif position == 2:
-		_spawn_notes(spawn_2_beat)
-	elif position == 3:
-		_spawn_notes(spawn_3_beat)
-	elif position == 4:
-		_spawn_notes(spawn_4_beat)
-
-func _spawn_notes(_to_spawn):
-	lane = randi() % 5
-	instance = note.instantiate()
-	instance.initialize(lane)
-	add_child(instance)
+func _spawn_notes(to_spawn):
+	if to_spawn > 0:
+		if to_spawn == 1:
+			lane = 4
+		elif to_spawn == 2:
+			lane = 3
+		elif to_spawn == 4:
+			lane = 2
+		elif to_spawn == 8:
+			lane = 1
+		elif to_spawn == 16:
+			lane = 0
+		instance = note.instantiate()
+		instance.initialize(lane)
+		add_child(instance)
+		
 	
 
