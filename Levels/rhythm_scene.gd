@@ -67,7 +67,7 @@ var instance
 func _ready():
 	lastbeat = 0
 	crotchet = 60 / bpm
-	$Conductor.play_from_beat(120, 2)
+	$Conductor.play_with_beat_offset(2)
 
 func _physics_process(_delta):
 	button_animation("leftbumper", lb_state_machine)
