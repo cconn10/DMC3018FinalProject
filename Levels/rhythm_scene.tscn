@@ -1,52 +1,52 @@
 [gd_scene load_steps=24 format=3 uid="uid://cflfydfrbpo5x"]
 
-[ext_resource type="Script" path="res://Levels/game_scene.gd" id="1_32g4i"]
-[ext_resource type="Texture2D" uid="uid://g4in6e2xwy62" path="res://Art/Button.png" id="2_2ss8u"]
-[ext_resource type="Texture2D" uid="uid://c0ojtw5mu2vrr" path="res://Art/LeftBumper.png" id="3_kp0iy"]
-[ext_resource type="Texture2D" uid="uid://b8pjmfd0xmwu3" path="res://Art/LeftTrigger.png" id="4_gh8vj"]
-[ext_resource type="Texture2D" uid="uid://intefjvcrack" path="res://Art/RightBumper.png" id="5_y57hq"]
-[ext_resource type="Texture2D" uid="uid://cwnesipm2vl3s" path="res://Art/RightTrigger.png" id="6_vm10x"]
-[ext_resource type="Texture2D" uid="uid://cnbp5kfrt3gvp" path="res://Art/Targets.png" id="7_468ct"]
-[ext_resource type="Texture2D" uid="uid://droqa5f4btoo2" path="res://Art/TargetBackground.png" id="8_pdtnr"]
-[ext_resource type="PackedScene" uid="uid://dyxabcowpxnir" path="res://Buttons/Buttons.tscn" id="9_u58cd"]
-[ext_resource type="PackedScene" uid="uid://ch6rb23w1ntkx" path="res://Buttons/LeftTrigger.tscn" id="11_14yxf"]
-[ext_resource type="PackedScene" uid="uid://cm64iffo6hffj" path="res://Buttons/RightBumper.tscn" id="12_o17t8"]
-[ext_resource type="PackedScene" uid="uid://dinq3y1dj7v2a" path="res://Buttons/LeftBumper.tscn" id="13_c8f71"]
-[ext_resource type="PackedScene" uid="uid://bcq43u4lhjrio" path="res://Buttons/RightTrigger.tscn" id="13_ceprq"]
-[ext_resource type="PackedScene" uid="uid://dku7t3sn3yjgx" path="res://Objects/end_zone.tscn" id="15_j4v0c"]
-[ext_resource type="PackedScene" uid="uid://cjxjs5pah2k37" path="res://Music/conductor.tscn" id="15_jspm4"]
+[ext_resource type="Script" path="res://Levels/rhythm_scene.gd" id="1_3k5jq"]
+[ext_resource type="Texture2D" uid="uid://g4in6e2xwy62" path="res://Art/Button.png" id="2_7o25c"]
+[ext_resource type="Texture2D" uid="uid://c0ojtw5mu2vrr" path="res://Art/LeftBumper.png" id="3_c6jaj"]
+[ext_resource type="Texture2D" uid="uid://b8pjmfd0xmwu3" path="res://Art/LeftTrigger.png" id="4_00io7"]
+[ext_resource type="Texture2D" uid="uid://intefjvcrack" path="res://Art/RightBumper.png" id="5_0f36h"]
+[ext_resource type="Texture2D" uid="uid://cwnesipm2vl3s" path="res://Art/RightTrigger.png" id="6_awly5"]
+[ext_resource type="Texture2D" uid="uid://cnbp5kfrt3gvp" path="res://Art/Targets.png" id="7_f684a"]
+[ext_resource type="Texture2D" uid="uid://droqa5f4btoo2" path="res://Art/TargetBackground.png" id="8_ls6yc"]
+[ext_resource type="PackedScene" uid="uid://ch6rb23w1ntkx" path="res://Buttons/LeftTrigger.tscn" id="9_meqth"]
+[ext_resource type="PackedScene" uid="uid://cm64iffo6hffj" path="res://Buttons/RightBumper.tscn" id="10_8ahx7"]
+[ext_resource type="PackedScene" uid="uid://bcq43u4lhjrio" path="res://Buttons/RightTrigger.tscn" id="11_ior1s"]
+[ext_resource type="PackedScene" uid="uid://dyxabcowpxnir" path="res://Buttons/Buttons.tscn" id="12_yg040"]
+[ext_resource type="PackedScene" uid="uid://dinq3y1dj7v2a" path="res://Buttons/LeftBumper.tscn" id="13_fwihr"]
+[ext_resource type="PackedScene" uid="uid://dku7t3sn3yjgx" path="res://Objects/end_zone.tscn" id="14_i2o0j"]
+[ext_resource type="PackedScene" uid="uid://cjxjs5pah2k37" path="res://Music/conductor.tscn" id="15_u2t6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ce1ot"]
-texture = ExtResource("2_2ss8u")
+texture = ExtResource("2_7o25c")
 0:0/0 = 0
 1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5xwbx"]
-texture = ExtResource("3_kp0iy")
+texture = ExtResource("3_c6jaj")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tw5k4"]
-texture = ExtResource("4_gh8vj")
+texture = ExtResource("4_00io7")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0fypd"]
-texture = ExtResource("5_y57hq")
+texture = ExtResource("5_0f36h")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eguid"]
-texture = ExtResource("6_vm10x")
+texture = ExtResource("6_awly5")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k11pr"]
-texture = ExtResource("7_468ct")
+texture = ExtResource("7_f684a")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -60,7 +60,7 @@ texture = ExtResource("7_468ct")
 2:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7dk7"]
-texture = ExtResource("8_pdtnr")
+texture = ExtResource("8_ls6yc")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -149,7 +149,7 @@ sources/5 = SubResource("TileSetAtlasSource_k11pr")
 sources/6 = SubResource("TileSetAtlasSource_k7dk7")
 
 [node name="GameScene" type="Node2D"]
-script = ExtResource("1_32g4i")
+script = ExtResource("1_3k5jq")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -159,46 +159,46 @@ layer_0/name = "Game"
 layer_0/z_index = 3
 layer_0/tile_data = PackedInt32Array(983064, 65541, 3, 1048600, 65541, 3, 1114136, 65541, 3, 1179672, 65541, 3, 1245208, 65541, 3, 1310744, 65541, 3, 1376280, 65541, 3, 1441816, 65541, 3, 1507352, 65541, 3, 1572888, 65541, 3, 983066, 65541, 3, 1048602, 65541, 3, 1114138, 65541, 3, 1179674, 65541, 3, 1245210, 65541, 3, 1310746, 65541, 3, 1376282, 65541, 3, 1441818, 65541, 3, 1507354, 65541, 3, 1572890, 65541, 3, 983068, 65541, 3, 1048604, 65541, 3, 1114140, 65541, 3, 1179676, 65541, 3, 1245212, 65541, 3, 1310748, 65541, 3, 1376284, 65541, 3, 1441820, 65541, 3, 1507356, 65541, 3, 1572892, 65541, 3, 983070, 65541, 3, 1048606, 65541, 3, 1179678, 65541, 3, 1245214, 65541, 3, 1310750, 65541, 3, 1376286, 65541, 3, 1441822, 65541, 3, 1507358, 65541, 3, 1572894, 65541, 3, 983072, 65541, 3, 1048608, 65541, 3, 1114144, 65541, 3, 1179680, 65541, 3, 1245216, 65541, 3, 1310752, 65541, 3, 1376288, 65541, 3, 1441824, 65541, 3, 1507360, 65541, 3, 1572896, 65541, 3, 983074, 65541, 3, 1048610, 65541, 3, 1114146, 65541, 3, 1179682, 65541, 3, 1245218, 65541, 3, 1310754, 65541, 3, 1376290, 65541, 3, 1441826, 65541, 3, 1507362, 65541, 3, 1572898, 65541, 3, 1114142, 65541, 3)
 
-[node name="LeftTrigger" parent="." instance=ExtResource("11_14yxf")]
+[node name="LeftTrigger" parent="." instance=ExtResource("9_meqth")]
 position = Vector2(438, 412)
 
-[node name="RightBumper" parent="." instance=ExtResource("12_o17t8")]
+[node name="RightBumper" parent="." instance=ExtResource("10_8ahx7")]
 position = Vector2(540, 411)
 
-[node name="RightTrigger" parent="." instance=ExtResource("13_ceprq")]
+[node name="RightTrigger" parent="." instance=ExtResource("11_ior1s")]
 position = Vector2(506, 413)
 
-[node name="Buttons" parent="." instance=ExtResource("9_u58cd")]
+[node name="Buttons" parent="." instance=ExtResource("12_yg040")]
 position = Vector2(472, 410)
 
-[node name="LeftBumper" parent="." instance=ExtResource("13_c8f71")]
+[node name="LeftBumper" parent="." instance=ExtResource("13_fwihr")]
 position = Vector2(404, 411)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(470, 317)
 zoom = Vector2(3, 3)
 
-[node name="EndZoneLT" parent="." instance=ExtResource("15_j4v0c")]
+[node name="EndZoneLT" parent="." instance=ExtResource("14_i2o0j")]
 texture_filter = 1
 position = Vector2(408, 392)
 
-[node name="EndZoneLB" parent="." instance=ExtResource("15_j4v0c")]
+[node name="EndZoneLB" parent="." instance=ExtResource("14_i2o0j")]
 texture_filter = 1
 position = Vector2(440, 392)
 
-[node name="EndZoneB" parent="." instance=ExtResource("15_j4v0c")]
+[node name="EndZoneB" parent="." instance=ExtResource("14_i2o0j")]
 texture_filter = 1
 position = Vector2(472, 392)
 
-[node name="EndZoneRB" parent="." instance=ExtResource("15_j4v0c")]
+[node name="EndZoneRB" parent="." instance=ExtResource("14_i2o0j")]
 texture_filter = 1
 position = Vector2(504, 392)
 
-[node name="EndZoneRT" parent="." instance=ExtResource("15_j4v0c")]
+[node name="EndZoneRT" parent="." instance=ExtResource("14_i2o0j")]
 texture_filter = 1
 position = Vector2(536, 392)
 
-[node name="Conductor" parent="." instance=ExtResource("15_jspm4")]
+[node name="Conductor" parent="." instance=ExtResource("15_u2t6i")]
 
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_conductor_measure"]
