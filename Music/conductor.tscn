@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjxjs5pah2k37"]
+[gd_scene load_steps=3 format=3 uid="uid://jgswppibkwg5"]
 
-[ext_resource type="AudioStream" uid="uid://3tspri7aveo8" path="res://Music/Prototype_song.mp3" id="1_jw2sm"]
+[ext_resource type="AudioStream" uid="uid://cfi872tucl6w8" path="res://Music/Drum_Tutorial.mp3" id="1_2n22l"]
 [ext_resource type="Script" path="res://Music/conductor.gd" id="1_w1ghs"]
 
 [node name="Conductor" type="AudioStreamPlayer"]
-stream = ExtResource("1_jw2sm")
+stream = ExtResource("1_2n22l")
 volume_db = -29.12
 script = ExtResource("1_w1ghs")
 

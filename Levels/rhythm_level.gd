@@ -6,14 +6,28 @@ extends Node2D
 @onready var rt_state_machine = $RightTrigger/AnimationTree.get("parameters/playback")
 @onready var b_state_machine = $Buttons/AnimationTree.get("parameters/playback")
 
-@onready var audio_stream = $Conductor
-
 #00001 (1) = RB
 #00010 (2) = RT
 #00100 (4) = BUTTON
 #01000 (8) = LT
 #10000 (16) = LB
-var song = [
+var drumTutorial = [
+0,0,0,1,
+0,0,0,1,
+0,0,0,1,
+0,0,0,1,
+0,1,0,1,
+0,1,0,1,
+0,1,0,1,
+0,1,0,1,
+1,1,1,1,
+1,1,1,1,
+1,1,1,1,
+1,1,1,1]
+var tapTutorial = []
+var shakeTutorial = []
+var finalTutorial = []
+var finalSong = [
 0,0,0,0,
 0,0,2,8,
 2,8,2,8,
@@ -87,8 +101,8 @@ func button_animation(button, state_machine):
 func _on_conductor_beat(position):
 	song_position_in_beats = position
 	print(position)
-	if position < len(song):
-		_spawn_notes(song[position])
+	if position < len(finalSong):
+		_spawn_notes(finalSong[position])
 	
 
 #func _on_conductor_measure(position):

@@ -10,6 +10,8 @@ var offset = 0
 var current_measure = 1
 var crotchet
 
+var currentSong = ""
+
 signal beat(position)
 signal measure(position)
 
@@ -42,7 +44,10 @@ func play_with_beat_offset(num):
 	offset = num
 	$StartTimer.wait_time = 60.0 / bpm
 	$StartTimer.start()
-	
+
+
+func set_song(song):
+	currentSong = song
 
 func _on_start_timer_timeout():
 	song_position_in_beats += 1

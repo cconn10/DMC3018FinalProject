@@ -24,7 +24,7 @@ func _physics_process(_delta):
 	#move and slide function uses velocity
 	move_and_slide()
 	pick_new_state()
-
+	
 func update_animation_parameters(move_input : Vector2):
 	if(move_input != Vector2.ZERO):
 		animation_tree.set("parameters/Walk/blend_position", move_input)
