@@ -45,10 +45,6 @@ func play_with_beat_offset(num):
 	$StartTimer.wait_time = 60.0 / bpm
 	$StartTimer.start()
 
-
-func set_song(song):
-	currentSong = song
-
 func _on_start_timer_timeout():
 	song_position_in_beats += 1
 	if song_position_in_beats < offset - 1:

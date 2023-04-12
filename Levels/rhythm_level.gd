@@ -77,6 +77,7 @@ var rand = 0
 var lane = 0
 var note = load("res://Objects/note.tscn")
 var instance
+var currentSong
 
 func _ready():
 	lastbeat = 0
@@ -96,7 +97,6 @@ func button_animation(button, state_machine):
 		state_machine.travel("press")
 	else:
 		state_machine.travel("unpress")
-	
 
 func _on_conductor_beat(position):
 	song_position_in_beats = position
@@ -105,7 +105,8 @@ func _on_conductor_beat(position):
 		_spawn_notes(finalSong[position])
 	
 
-#func _on_conductor_measure(position):
+func _on_conductor_measure(position):
+	pass
 #	if position == 1:
 #		_spawn_notes(spawn_1_beat)
 #	elif position == 2:
@@ -131,5 +132,3 @@ func _spawn_notes(to_spawn):
 		instance.initialize(lane)
 		add_child(instance)
 		
-	
-

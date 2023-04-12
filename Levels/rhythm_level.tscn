@@ -148,7 +148,7 @@ sources/4 = SubResource("TileSetAtlasSource_eguid")
 sources/5 = SubResource("TileSetAtlasSource_k11pr")
 sources/6 = SubResource("TileSetAtlasSource_k7dk7")
 
-[node name="GameScene" type="Node2D"]
+[node name="RhythmScene" type="Node2D"]
 script = ExtResource("1_yvrco")
 
 [node name="TileMap" type="TileMap" parent="."]
