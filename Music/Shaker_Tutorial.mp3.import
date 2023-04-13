@@ -2,13 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://cujlpq5bmw4uc"
-path="res://.godot/imported/Shaker_Tutorial.mp3-e8497e1dd465b9fade26831b3cc58ab7.mp3str"
+uid="uid://bihdrsj7duqae"
+path="res://.godot/imported/shaker_tutorial.mp3-75bc5ee3d864a4eea28e96e9fdf01323.mp3str"
 
 [deps]
 
-source_file="res://Music/Shaker_Tutorial.mp3"
-dest_files=["res://.godot/imported/Shaker_Tutorial.mp3-e8497e1dd465b9fade26831b3cc58ab7.mp3str"]
+source_file="res://Music/shaker_tutorial.mp3"
+dest_files=["res://.godot/imported/shaker_tutorial.mp3-75bc5ee3d864a4eea28e96e9fdf01323.mp3str"]
 
 [params]
 

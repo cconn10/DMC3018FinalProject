@@ -1,10 +1,10 @@
 extends Node2D
 
-@onready var lb_state_machine = $LeftBumper/AnimationTree.get("parameters/playback")
-@onready var lt_state_machine = $LeftTrigger/AnimationTree.get("parameters/playback")
-@onready var rb_state_machine = $RightBumper/AnimationTree.get("parameters/playback")
-@onready var rt_state_machine = $RightTrigger/AnimationTree.get("parameters/playback")
-@onready var b_state_machine = $Buttons/AnimationTree.get("parameters/playback")
+@onready var lb_state_machine = $"A Key"/AnimationTree.get("parameters/playback")
+@onready var lt_state_machine = $"S Key"/AnimationTree.get("parameters/playback")
+@onready var rb_state_machine = $"L Key"/AnimationTree.get("parameters/playback")
+@onready var rt_state_machine = $"K Key"/AnimationTree.get("parameters/playback")
+@onready var b_state_machine = $"Space"/AnimationTree.get("parameters/playback")
 
 #00001 (1) = RB
 #00010 (2) = RT
@@ -12,20 +12,93 @@ extends Node2D
 #01000 (8) = LT
 #10000 (16) = LB
 var drumTutorial = [
-0,0,0,1,
-0,0,0,1,
-0,0,0,1,
-0,0,0,1,
-0,1,0,1,
-0,1,0,1,
-0,1,0,1,
-0,1,0,1,
-1,1,1,1,
-1,1,1,1,
-1,1,1,1,
-1,1,1,1]
-var tapTutorial = []
-var shakeTutorial = []
+0,0,0,0,
+1,0,0,0,
+0,0,0,0,
+1,0,0,0,
+0,0,0,0,
+16,0,0,0,
+0,0,0,0,
+16,0,0,0,
+1,0,0,0,
+1,0,0,0,
+16,0,0,0,
+16,0,0,0,
+1,0,0,0,
+16,0,0,0,
+1,0,0,0,
+16,0,0,0,
+1,0,1,0,
+1,0,1,0,
+16,0,16,0,
+16,0,16,0,
+1,0,1,0,
+1,0,1,0,
+16,0,16,0,
+16,0,16,0,
+1,0,1,1,
+0,1,1,0,
+16,0,16,16,
+0,16,16,0,
+1,0,1,1,
+0,1,1,0,
+16,0,16,16,
+0,16,16,0]
+var tapTutorial = [
+2,0,0,0,
+2,0,0,0,
+2,0,0,0,
+2,0,0,0,
+8,0,0,0,
+8,0,0,0,
+8,0,0,0,
+8,0,0,0,
+2,0,2,0,
+2,0,2,0,
+8,0,8,0,
+8,0,8,0,
+2,0,2,0,
+8,0,8,0,
+2,0,2,0,
+8,0,8,0,
+2,2,0,2,
+0,2,0,2,
+2,8,0,8,
+0,8,0,8,
+8,2,0,2,
+0,2,0,2,
+2,8,0,8,
+0,8,0,8,
+8]
+var shakeTutorial = [
+0,0,0,0,
+4,0,0,0,
+0,0,0,0,
+4,0,0,0,
+4,0,0,0,
+4,0,0,0,
+4,0,0,0,
+4,0,0,0,
+4,0,0,0,
+4,0,0,0,
+4,0,0,0,
+4,0,0,0,
+4,0,4,0,
+4,0,4,0,
+4,0,4,0,
+4,0,4,0,
+4,0,4,0,
+4,0,4,0,
+4,0,4,0,
+4,0,4,0,
+4,0,4,4,
+0,4,0,4,
+4,0,4,4,
+0,4,0,4,
+4,0,4,4,
+0,4,0,4,
+4,0,4,4,
+0,4,0,4]
 var finalTutorial = []
 var finalSong = [
 0,0,0,0,
@@ -61,7 +134,7 @@ var finalSong = [
 2,8,2
 ]
 
-var bpm = 120
+var bpm = 180
 var offset = 0.2
 var crotchet
 var lastbeat
@@ -82,7 +155,22 @@ var currentSong
 func _ready():
 	lastbeat = 0
 	crotchet = 60 / bpm
-	$Conductor.play_with_beat_offset(2)
+	
+	$Conductor.connect("finished", _on_conductor_finished)
+	
+	match GlobalVariables.current_song:
+		GlobalVariables.SONG.DRUM_TUTORIAL:
+			currentSong = drumTutorial
+		GlobalVariables.SONG.SHAKE_TUTORIAL:
+			currentSong = shakeTutorial
+		GlobalVariables.SONG.TAP_TUTORIAL:
+			currentSong = tapTutorial
+		GlobalVariables.SONG.FINAL_TUTORIAL:
+			currentSong = finalTutorial
+		GlobalVariables.SONG.BOSS_BATTLE:
+			currentSong = finalSong
+	
+	$Conductor.play_with_beat_offset(6)
 
 func _physics_process(_delta):
 	button_animation("leftbumper", lb_state_machine)
@@ -100,10 +188,13 @@ func button_animation(button, state_machine):
 
 func _on_conductor_beat(position):
 	song_position_in_beats = position
-	print(position)
-	if position < len(finalSong):
-		_spawn_notes(finalSong[position])
+	if position < len(currentSong):
+		_spawn_notes(currentSong[position])
+		
 	
+func _on_conductor_finished():
+	GlobalVariables.tutorials_completed.push_back(GlobalVariables.current_song)
+	GlobalVariables.goto_scene("res://Levels/game_level.tscn")
 
 func _on_conductor_measure(position):
 	pass
