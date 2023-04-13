@@ -1,7 +1,46 @@
-[gd_scene load_steps=29 format=3 uid="uid://den5s5qficdgw"]
+[gd_scene load_steps=29 format=3 uid="uid://b4s7f0tsckgis"]
 
-[ext_resource type="Script" path="res://Characters/player_cat.gd" id="1_3psgl"]
 [ext_resource type="Texture2D" uid="uid://dansimr16l7e6" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_24k51"]
+
+[sub_resource type="GDScript" id="GDScript_nh58y"]
+script/source = "extends CharacterBody2D
+
+@export var move_speed : float = 100
+@export var starting_direction : Vector2 = Vector2(0,1)
+
+@onready var animation_tree = $AnimationTree
+@onready var state_machine = animation_tree.get(\"parameters/playback\")
+
+func _ready():
+	animation_tree.set(\"parameters/Idle/blend_position\", starting_direction)
+
+func _physics_process(_delta):
+	# get input direction
+	var input_direction = Vector2(
+		Input.get_action_strength(\"right\") - Input.get_action_strength(\"left\"),
+		Input.get_action_strength(\"down\") - Input.get_action_strength(\"up\"),
+	)
+	
+	update_animation_parameters(input_direction)
+	
+	#update velocity
+	velocity = input_direction * move_speed
+	
+	#move and slide function uses velocity
+	move_and_slide()
+	pick_new_state()
+
+func update_animation_parameters(move_input : Vector2):
+	if(move_input != Vector2.ZERO):
+		animation_tree.set(\"parameters/Walk/blend_position\", move_input)
+		animation_tree.set(\"parameters/Idle/blend_position\", move_input)
+		
+func pick_new_state():
+	if(velocity != Vector2.ZERO):
+		state_machine.travel(\"Walk\")
+	else:
+		state_machine.travel(\"Idle\")
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3u8e"]
 size = Vector2(10, 5)
@@ -237,7 +276,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ov6im"]
 
 [node name="PlayerCat" type="CharacterBody2D"]
-script = ExtResource("1_3psgl")
+script = SubResource("GDScript_nh58y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_24k51")

@@ -159,20 +159,20 @@ layer_0/name = "Game"
 layer_0/z_index = 3
 layer_0/tile_data = PackedInt32Array(983064, 65541, 3, 1048600, 65541, 3, 1114136, 65541, 3, 1179672, 65541, 3, 1245208, 65541, 3, 1310744, 65541, 3, 1376280, 65541, 3, 1441816, 65541, 3, 1507352, 65541, 3, 1572888, 65541, 3, 983066, 65541, 3, 1048602, 65541, 3, 1114138, 65541, 3, 1179674, 65541, 3, 1245210, 65541, 3, 1310746, 65541, 3, 1376282, 65541, 3, 1441818, 65541, 3, 1507354, 65541, 3, 1572890, 65541, 3, 983068, 65541, 3, 1048604, 65541, 3, 1114140, 65541, 3, 1179676, 65541, 3, 1245212, 65541, 3, 1310748, 65541, 3, 1376284, 65541, 3, 1441820, 65541, 3, 1507356, 65541, 3, 1572892, 65541, 3, 983070, 65541, 3, 1048606, 65541, 3, 1179678, 65541, 3, 1245214, 65541, 3, 1310750, 65541, 3, 1376286, 65541, 3, 1441822, 65541, 3, 1507358, 65541, 3, 1572894, 65541, 3, 983072, 65541, 3, 1048608, 65541, 3, 1114144, 65541, 3, 1179680, 65541, 3, 1245216, 65541, 3, 1310752, 65541, 3, 1376288, 65541, 3, 1441824, 65541, 3, 1507360, 65541, 3, 1572896, 65541, 3, 983074, 65541, 3, 1048610, 65541, 3, 1114146, 65541, 3, 1179682, 65541, 3, 1245218, 65541, 3, 1310754, 65541, 3, 1376290, 65541, 3, 1441826, 65541, 3, 1507362, 65541, 3, 1572898, 65541, 3, 1114142, 65541, 3)
 
-[node name="LeftTrigger" parent="." instance=ExtResource("9_3y7bf")]
-position = Vector2(438, 412)
+[node name="S Key" parent="." instance=ExtResource("9_3y7bf")]
+position = Vector2(441, 411)
 
-[node name="RightBumper" parent="." instance=ExtResource("10_cs383")]
-position = Vector2(540, 411)
+[node name="L Key" parent="." instance=ExtResource("10_cs383")]
+position = Vector2(536, 411)
 
-[node name="RightTrigger" parent="." instance=ExtResource("11_q6emh")]
-position = Vector2(506, 413)
+[node name="K Key" parent="." instance=ExtResource("11_q6emh")]
+position = Vector2(504, 411)
 
-[node name="Buttons" parent="." instance=ExtResource("12_h7mh6")]
-position = Vector2(472, 410)
+[node name="Space" parent="." instance=ExtResource("12_h7mh6")]
+position = Vector2(472, 411)
 
-[node name="LeftBumper" parent="." instance=ExtResource("13_atkrg")]
-position = Vector2(404, 411)
+[node name="A Key" parent="." instance=ExtResource("13_atkrg")]
+position = Vector2(408, 411)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(470, 317)

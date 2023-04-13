@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dyxabcowpxnir"]
 
-[ext_resource type="Texture2D" uid="uid://g4in6e2xwy62" path="res://Art/Button.png" id="1_fyvh7"]
+[ext_resource type="Texture2D" uid="uid://d11nul7054yav" path="res://Art/Keyboard/Space_key.png" id="1_d5u4j"]
 
 [sub_resource type="Animation" id="Animation_xrlxe"]
 length = 0.001
@@ -77,11 +77,11 @@ transitions = ["press", "unpress", SubResource("AnimationNodeStateMachineTransit
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_nutah"]
 
-[node name="Buttons" type="Sprite2D"]
+[node name="Space" type="Sprite2D"]
 texture_filter = 1
 position = Vector2(406, 410)
-texture = ExtResource("1_fyvh7")
-hframes = 2
+texture = ExtResource("1_d5u4j")
+vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

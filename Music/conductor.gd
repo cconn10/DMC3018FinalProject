@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-@export var bpm = 120
+@export var bpm = 180
 @export var measures = 4
 
 var song_position = 0.0
@@ -10,13 +10,12 @@ var offset = 0
 var current_measure = 1
 var crotchet
 
-var currentSong = ""
-
 signal beat(position)
 signal measure(position)
 
 func _ready():
 	crotchet = 60.0 / bpm
+	self.stream = load(GlobalVariables.current_song_path)
 
 func _physics_process(_delta):
 	if playing:
