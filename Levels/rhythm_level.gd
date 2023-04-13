@@ -69,7 +69,14 @@ var tapTutorial = [
 0,2,0,2,
 2,8,0,8,
 0,8,0,8,
-8]
+8,0,2,2,
+0,8,0,8,
+0,2,0,2,
+0,8,0,8,
+0,2,0,2,
+0,8,0,8,
+0,2,0,2,
+0,8,8,0]
 var shakeTutorial = [
 0,0,0,0,
 4,0,0,0,
@@ -223,3 +230,7 @@ func _spawn_notes(to_spawn):
 		instance.initialize(lane)
 		add_child(instance)
 		
+func _unhandled_input(event):
+	if event.is_action_pressed("Force_quit"):
+		GlobalVariables.tutorials_completed.push_back(GlobalVariables.current_song)
+		GlobalVariables.goto_scene("res://Levels/game_level.tscn")

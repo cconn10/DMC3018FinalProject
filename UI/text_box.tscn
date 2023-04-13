@@ -22,7 +22,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -136.0
+offset_top = -197.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 64
@@ -51,3 +51,9 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Text"
 autowrap_mode = 3
+
+[node name="End Text" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Press enter to continue"

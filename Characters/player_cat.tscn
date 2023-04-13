@@ -275,7 +275,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ov6im"]
 
-[node name="PlayerCat" type="CharacterBody2D"]
+[node name="PlayerCat2" type="CharacterBody2D"]
 script = SubResource("GDScript_nh58y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

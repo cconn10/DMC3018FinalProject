@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://xabmudvdxiij"
-path="res://.godot/imported/tap_tutorial.mp3-ee7867ba27904a740a72cee2765d3739.mp3str"
+path="res://.godot/imported/Tap_tutorial.mp3-ab2be2b3be66d0a355feaa647f9bfa54.mp3str"
 
 [deps]
 
-source_file="res://Music/tap_tutorial.mp3"
-dest_files=["res://.godot/imported/tap_tutorial.mp3-ee7867ba27904a740a72cee2765d3739.mp3str"]
+source_file="res://Music/Tap_tutorial.mp3"
+dest_files=["res://.godot/imported/Tap_tutorial.mp3-ab2be2b3be66d0a355feaa647f9bfa54.mp3str"]
 
 [params]
 

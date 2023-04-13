@@ -201,5 +201,13 @@ position = Vector2(536, 392)
 [node name="Conductor" parent="." instance=ExtResource("15_hb51j")]
 volume_db = -8.32
 
+[node name="Label" type="Label" parent="."]
+offset_left = 430.0
+offset_top = 217.0
+offset_right = 638.0
+offset_bottom = 243.0
+scale = Vector2(0.4, 0.4)
+text = "To exit early, press ESC key"
+
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_conductor_measure"]

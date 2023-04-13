@@ -42,7 +42,7 @@ func _unhandled_input(event):
 					text_box.queue_text("You have found one of your ancestor’s traditional drums that were broken during the war against evil. It is now your mission to find other missing parts and rebuild the drum to make it alive again.")
 					text_box.queue_text("[press enter to start the drum tutorial]")
 				entering_rhythm = true
-				enter_rhythm("res://Music/drum_tutorial.mp3", GlobalVariables.SONG.DRUM_TUTORIAL)
+				enter_rhythm("res://Music/Drum_tutorial.mp3", GlobalVariables.SONG.DRUM_TUTORIAL)
 		
 		elif abs(playerPos.x - npc2Pos.x) < 20 and abs(playerPos.y - npc2Pos.y) < 20:
 			if GlobalVariables.tutorials_completed.has(GlobalVariables.SONG.TAP_TUTORIAL):
@@ -53,7 +53,7 @@ func _unhandled_input(event):
 					text_box.queue_text("You have found a missing piece of the drum base. Use this to build a complete drum that later can be used as a weapon.")
 					text_box.queue_text("[press enter to start the drum tutorial]")
 				entering_rhythm = true
-				enter_rhythm("res://Music/tap_tutorial.mp3", GlobalVariables.SONG.TAP_TUTORIAL)
+				enter_rhythm("res://Music/Tap_tutorial.mp3", GlobalVariables.SONG.TAP_TUTORIAL)
 		
 		elif abs(playerPos.x - npc3Pos.x) < 20 and abs(playerPos.y - npc3Pos.y) < 20:
 			if GlobalVariables.tutorials_completed.has(GlobalVariables.SONG.SHAKE_TUTORIAL):
@@ -64,12 +64,12 @@ func _unhandled_input(event):
 					text_box.queue_text("You have found the chain of charms that went missing during the war. Hang these on the side of your drum to create shaking sounds.")
 					text_box.queue_text("[press enter to start the drum tutorial]")
 				entering_rhythm = true
-				enter_rhythm("res://Music/shaker_tutorial.mp3", GlobalVariables.SONG.SHAKE_TUTORIAL)					
+				enter_rhythm("res://Music/Shaker_tutorial.mp3", GlobalVariables.SONG.SHAKE_TUTORIAL)					
 		
 		elif abs(playerPos.x - npc4Pos.x) < 20 and abs(playerPos.y - npc4Pos.y) < 20:
 			if len(GlobalVariables.tutorials_completed) > 2:
 				entering_rhythm = true
-				enter_rhythm("res://Music/final_tutorial.mp3", GlobalVariables.SONG.FINAL_TUTORIAL)
+				enter_rhythm("res://Music/Final_tutorial.mp3", GlobalVariables.SONG.FINAL_TUTORIAL)
 			else:
 				text_box.queue_text("You don't have a completed instrument yet...")
 				entering_rhythm = false

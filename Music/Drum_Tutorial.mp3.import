@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://cjux0b2rc6fwf"
-path="res://.godot/imported/drum_tutorial.mp3-64f043e39b4c9db7d781fddcdb08516d.mp3str"
+path="res://.godot/imported/Drum_Tutorial.mp3-9704cf936008b55e559130cf20adda23.mp3str"
 
 [deps]
 
-source_file="res://Music/drum_tutorial.mp3"
-dest_files=["res://.godot/imported/drum_tutorial.mp3-64f043e39b4c9db7d781fddcdb08516d.mp3str"]
+source_file="res://Music/Drum_Tutorial.mp3"
+dest_files=["res://.godot/imported/Drum_Tutorial.mp3-9704cf936008b55e559130cf20adda23.mp3str"]
 
 [params]
 

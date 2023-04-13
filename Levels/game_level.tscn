@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dcnfff2nsd4y4"]
+[gd_scene load_steps=22 format=3 uid="uid://dcnfff2nsd4y4"]
 
 [ext_resource type="PackedScene" uid="uid://cbfcb208yyi6s" path="res://Characters/spren.tscn" id="1_5kxwu"]
 [ext_resource type="Script" path="res://Levels/game_level.gd" id="1_ko6j2"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cu0b7tphilm2s" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="7_il01r"]
 [ext_resource type="Texture2D" uid="uid://dflq04laixh7h" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="8_vmjtd"]
 [ext_resource type="PackedScene" uid="uid://c6vnf88pr1ut3" path="res://Characters/cow.tscn" id="9_o2s2i"]
-[ext_resource type="Texture2D" uid="uid://g4in6e2xwy62" path="res://Art/Button.png" id="10_ga3w1"]
+[ext_resource type="Texture2D" uid="uid://d11nul7054yav" path="res://Art/Keyboard/Space_key.png" id="11_8ytl0"]
 [ext_resource type="AudioStream" uid="uid://3he5enrqywt5" path="res://Music/Overworld_without_ukelele.mp3" id="12_mxd5r"]
 [ext_resource type="PackedScene" uid="uid://cwx63b6pq552y" path="res://UI/text_box.tscn" id="13_gkcjw"]
 
@@ -790,64 +790,6 @@ sources/4 = SubResource("TileSetAtlasSource_a4er5")
 sources/5 = SubResource("TileSetAtlasSource_wngot")
 sources/6 = SubResource("TileSetAtlasSource_3kr45")
 
-[sub_resource type="Animation" id="Animation_a08em"]
-resource_name = "ButtonPress"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_uydhe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cy5ij"]
-_data = {
-"ButtonPress": SubResource("Animation_a08em"),
-"RESET": SubResource("Animation_uydhe")
-}
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m81wm"]
-animation = &"ButtonPress"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1bxuj"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sibr8"]
-states/ButtonPress/node = SubResource("AnimationNodeAnimation_m81wm")
-states/ButtonPress/position = Vector2(480, 102)
-transitions = ["Start", "ButtonPress", SubResource("AnimationNodeStateMachineTransition_1bxuj")]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_m4j0v"]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_6u0r4"]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_6omb2"]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_8dayl"]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_vhojy"]
-
 [node name="GameScene" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ko6j2")
@@ -896,92 +838,42 @@ zoom = Vector2(3, 3)
 [node name="Cow1" parent="." instance=ExtResource("9_o2s2i")]
 position = Vector2(50, 17)
 
-[node name="Button1" type="Sprite2D" parent="Cow1"]
-position = Vector2(-1, -16)
-texture = ExtResource("10_ga3w1")
-hframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cow1/Button1"]
-libraries = {
-"": SubResource("AnimationLibrary_cy5ij")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="Cow1/Button1"]
-tree_root = SubResource("AnimationNodeStateMachine_sibr8")
-anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_m4j0v")
+[node name="SpaceKey1" type="Sprite2D" parent="Cow1"]
+position = Vector2(0, -15)
+texture = ExtResource("11_8ytl0")
+vframes = 2
 
 [node name="Cow2" parent="." instance=ExtResource("9_o2s2i")]
 position = Vector2(443, 25)
 
-[node name="Button2" type="Sprite2D" parent="Cow2"]
+[node name="SpaceKey2" type="Sprite2D" parent="Cow2"]
 position = Vector2(2, -16)
-texture = ExtResource("10_ga3w1")
-hframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cow2/Button2"]
-libraries = {
-"": SubResource("AnimationLibrary_cy5ij")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="Cow2/Button2"]
-tree_root = SubResource("AnimationNodeStateMachine_sibr8")
-anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_6u0r4")
+texture = ExtResource("11_8ytl0")
+vframes = 2
 
 [node name="Cow3" parent="." instance=ExtResource("9_o2s2i")]
 position = Vector2(248, 115)
 
-[node name="Button3" type="Sprite2D" parent="Cow3"]
-position = Vector2(0, -13)
-texture = ExtResource("10_ga3w1")
-hframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cow3/Button3"]
-libraries = {
-"": SubResource("AnimationLibrary_cy5ij")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="Cow3/Button3"]
-tree_root = SubResource("AnimationNodeStateMachine_sibr8")
-anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_6omb2")
+[node name="SpaceKey3" type="Sprite2D" parent="Cow3"]
+position = Vector2(1, -15)
+texture = ExtResource("11_8ytl0")
+vframes = 2
 
 [node name="Cow4" parent="." instance=ExtResource("9_o2s2i")]
 position = Vector2(158, 200)
 
-[node name="Button4" type="Sprite2D" parent="Cow4"]
-position = Vector2(0, -13)
-texture = ExtResource("10_ga3w1")
-hframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cow4/Button4"]
-libraries = {
-"": SubResource("AnimationLibrary_cy5ij")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="Cow4/Button4"]
-tree_root = SubResource("AnimationNodeStateMachine_sibr8")
-anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_8dayl")
+[node name="SpaceKey4" type="Sprite2D" parent="Cow4"]
+position = Vector2(-1, -18)
+texture = ExtResource("11_8ytl0")
+vframes = 2
 
 [node name="Cow5" parent="." instance=ExtResource("9_o2s2i")]
 position = Vector2(-117, 238)
 
-[node name="Button5" type="Sprite2D" parent="Cow5"]
-position = Vector2(0, -13)
-texture = ExtResource("10_ga3w1")
-hframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cow5/Button5"]
-libraries = {
-"": SubResource("AnimationLibrary_cy5ij")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="Cow5/Button5"]
-tree_root = SubResource("AnimationNodeStateMachine_sibr8")
-anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_vhojy")
+[node name="SpaceKey5" type="Sprite2D" parent="Cow5"]
+position = Vector2(1, -23)
+texture = ExtResource("11_8ytl0")
+vframes = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_mxd5r")
