@@ -8,7 +8,11 @@ var current_song_path = ""
 var tutorials_completed = []
 
 var overworld_music_volume
-var overworld_music_path = "res://Music/Overworld_without_ukelele.mp3"
+var overworld_music_path = ""
+
+var player_position = [234, -114]
+
+var textBoxVisible = false;
 
 enum SONG { DRUM_TUTORIAL, TAP_TUTORIAL, SHAKE_TUTORIAL, FINAL_TUTORIAL, BOSS_BATTLE, NONE }
 

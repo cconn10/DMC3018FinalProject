@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dcnfff2nsd4y4"]
+[gd_scene load_steps=21 format=3 uid="uid://dcnfff2nsd4y4"]
 
 [ext_resource type="PackedScene" uid="uid://cbfcb208yyi6s" path="res://Characters/spren.tscn" id="1_5kxwu"]
 [ext_resource type="Script" path="res://Levels/game_level.gd" id="1_ko6j2"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dflq04laixh7h" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="8_vmjtd"]
 [ext_resource type="PackedScene" uid="uid://c6vnf88pr1ut3" path="res://Characters/cow.tscn" id="9_o2s2i"]
 [ext_resource type="Texture2D" uid="uid://d11nul7054yav" path="res://Art/Keyboard/Space_key.png" id="11_8ytl0"]
-[ext_resource type="AudioStream" uid="uid://3he5enrqywt5" path="res://Music/Overworld_without_ukelele.mp3" id="12_mxd5r"]
 [ext_resource type="PackedScene" uid="uid://cwx63b6pq552y" path="res://UI/text_box.tscn" id="13_gkcjw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3jihd"]
@@ -876,7 +875,6 @@ texture = ExtResource("11_8ytl0")
 vframes = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_mxd5r")
 autoplay = true
 
 [node name="TextBox" parent="." instance=ExtResource("13_gkcjw")]

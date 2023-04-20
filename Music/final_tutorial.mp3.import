@@ -2,18 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://8yu6tbj7rcr4"
-path="res://.godot/imported/Final_tutorial.mp3-bbb0f1bf82a78062c8034a8a837d7ae9.mp3str"
+uid="uid://pjoneg5n83j7"
+path="res://.godot/imported/Final_Tutorial.mp3-81f224ee4477d3ae2131a49e9f5d4ce8.mp3str"
 
 [deps]
 
-source_file="res://Music/Final_tutorial.mp3"
-dest_files=["res://.godot/imported/Final_tutorial.mp3-bbb0f1bf82a78062c8034a8a837d7ae9.mp3str"]
+source_file="res://Music/Final_Tutorial.mp3"
+dest_files=["res://.godot/imported/Final_Tutorial.mp3-81f224ee4477d3ae2131a49e9f5d4ce8.mp3str"]
 
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

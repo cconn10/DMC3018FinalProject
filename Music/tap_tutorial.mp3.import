@@ -2,18 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://xabmudvdxiij"
-path="res://.godot/imported/Tap_tutorial.mp3-ab2be2b3be66d0a355feaa647f9bfa54.mp3str"
+uid="uid://ci4an2r8hde4v"
+path="res://.godot/imported/Tap_Tutorial.mp3-c7e5efa8e9e1096fb688c827120ac378.mp3str"
 
 [deps]
 
-source_file="res://Music/Tap_tutorial.mp3"
-dest_files=["res://.godot/imported/Tap_tutorial.mp3-ab2be2b3be66d0a355feaa647f9bfa54.mp3str"]
+source_file="res://Music/Tap_Tutorial.mp3"
+dest_files=["res://.godot/imported/Tap_Tutorial.mp3-c7e5efa8e9e1096fb688c827120ac378.mp3str"]
 
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

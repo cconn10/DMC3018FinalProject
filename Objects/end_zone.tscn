@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dku7t3sn3yjgx"]
+[gd_scene load_steps=6 format=3 uid="uid://dku7t3sn3yjgx"]
 
 [ext_resource type="Texture2D" uid="uid://cnbp5kfrt3gvp" path="res://Art/Targets.png" id="1_0fb6n"]
 [ext_resource type="Script" path="res://Objects/end_zone.gd" id="2_55pu5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v35sp"]
 radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8gvx"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmyyo"]
+radius = 4.0
 
 [node name="EndZone" type="Sprite2D"]
 texture = ExtResource("1_0fb6n")
@@ -13,10 +19,24 @@ vframes = 4
 frame = 12
 script = ExtResource("2_55pu5")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="OkayArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OkayArea"]
 shape = SubResource("CircleShape2D_v35sp")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[node name="GoodArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoodArea"]
+shape = SubResource("CircleShape2D_a8gvx")
+
+[node name="PerfectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectArea"]
+shape = SubResource("CircleShape2D_kmyyo")
+
+[connection signal="area_entered" from="OkayArea" to="." method="_on_okay_area_entered"]
+[connection signal="area_exited" from="OkayArea" to="." method="_on_okay_area_exited"]
+[connection signal="area_entered" from="GoodArea" to="." method="_on_good_area_entered"]
+[connection signal="area_exited" from="GoodArea" to="." method="_on_good_area_exited"]
+[connection signal="area_entered" from="PerfectArea" to="." method="_on_perfect_area_entered"]
+[connection signal="area_exited" from="PerfectArea" to="." method="_on_perfect_area_exited"]

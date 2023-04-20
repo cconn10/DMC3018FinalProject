@@ -8,11 +8,12 @@ var lane_2_pos = 472;
 var lane_3_pos = 504;
 var lane_4_pos = 536;
 
-var in_target = false
+var perfect = false
+var good = false
+var okay = false
+
 var current_note = null
 var lane = -1
-
-@export var input = "leftbumper"
 
 func _unhandled_input(event):
 	if event.is_action_pressed("leftbumper"):
@@ -28,12 +29,25 @@ func _unhandled_input(event):
 			
 func target_check(l):
 	if current_note != null:
-		if in_target and lane == l:
-			current_note.destroy()
+		if lane == l:
+			print("LANE SET")
+			if perfect:
+				current_note.destroy()
+				get_parent().increment_score(300)
+			elif good:
+				current_note.destroy()
+				get_parent().increment_score(200)
+			elif okay:
+				current_note.destroy()
+				get_parent().increment_score(100)
+			else:
+				get_parent().increment_score(0)
 			_reset()
-	
+	else:
+		get_parent().increment_score(0)
 
-func _on_area_entered(area):
+
+func check_lane(area):
 	var x_pos = area.position.x
 	if(x_pos == lane_0_pos):
 		lane = 0
@@ -45,15 +59,40 @@ func _on_area_entered(area):
 		lane = 3
 	elif(x_pos == lane_4_pos):
 		lane = 4
-	if area.is_in_group("note"):
-		in_target = true
-		current_note = area
-		
-func _on_area_exited(area):
-	if area.is_in_group("note"):
-		in_target = false
-		current_note = null
 
 func _reset():
 	current_note = null
-	in_target = false
+	lane = -1
+	okay = false
+	good = false
+	perfect = false
+
+
+func _on_okay_area_entered(area):
+	current_note = area
+	check_lane(area)
+	if area.is_in_group("note"):
+		okay = true
+
+func _on_okay_area_exited(area):
+	if area.is_in_group("note"):
+		okay = false
+	
+func _on_good_area_entered(area):
+	if area.is_in_group("note"):
+		good = true
+
+
+func _on_good_area_exited(area):
+	if area.is_in_group("note"):
+		good = false
+
+
+func _on_perfect_area_entered(area):
+	if area.is_in_group("note"):
+		perfect = true
+	
+
+func _on_perfect_area_exited(area):
+	if area.is_in_group("note"):
+		perfect = false

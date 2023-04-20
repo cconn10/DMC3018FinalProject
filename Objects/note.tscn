@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cnbp5kfrt3gvp" path="res://Art/Targets.png" id="2_ff0b5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mgpwh"]
-radius = 8.0
+radius = 4.0
 
 [node name="Note" type="Area2D" groups=["note"]]
 texture_filter = 1
 script = ExtResource("1_4ej2g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+top_level = true
 shape = SubResource("CircleShape2D_mgpwh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

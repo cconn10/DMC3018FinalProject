@@ -1,12 +1,14 @@
-[gd_scene load_steps=29 format=3 uid="uid://b4s7f0tsckgis"]
+[gd_scene load_steps=30 format=3 uid="uid://b4s7f0tsckgis"]
 
 [ext_resource type="Texture2D" uid="uid://dansimr16l7e6" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_24k51"]
+[ext_resource type="PackedScene" uid="uid://cwx63b6pq552y" path="res://UI/text_box.tscn" id="2_j62jo"]
 
 [sub_resource type="GDScript" id="GDScript_nh58y"]
 script/source = "extends CharacterBody2D
 
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0,1)
+@export var can_move : bool = true
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get(\"parameters/playback\")
@@ -15,20 +17,21 @@ func _ready():
 	animation_tree.set(\"parameters/Idle/blend_position\", starting_direction)
 
 func _physics_process(_delta):
-	# get input direction
-	var input_direction = Vector2(
-		Input.get_action_strength(\"right\") - Input.get_action_strength(\"left\"),
-		Input.get_action_strength(\"down\") - Input.get_action_strength(\"up\"),
-	)
-	
-	update_animation_parameters(input_direction)
-	
-	#update velocity
-	velocity = input_direction * move_speed
-	
-	#move and slide function uses velocity
-	move_and_slide()
-	pick_new_state()
+	if can_move:
+		# get input direction
+		var input_direction = Vector2(
+			Input.get_action_strength(\"right\") - Input.get_action_strength(\"left\"),
+			Input.get_action_strength(\"down\") - Input.get_action_strength(\"up\"),
+		)
+		
+		update_animation_parameters(input_direction)
+		
+		#update velocity
+		velocity = input_direction * move_speed
+		
+		#move and slide function uses velocity
+		move_and_slide()
+		pick_new_state()
 
 func update_animation_parameters(move_input : Vector2):
 	if(move_input != Vector2.ZERO):
@@ -299,3 +302,5 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ov6im")
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="TextBox" parent="." instance=ExtResource("2_j62jo")]

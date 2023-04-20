@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://bihdrsj7duqae"
+uid="uid://blc8n6pbmm206"
 path="res://.godot/imported/Shaker_Tutorial.mp3-e8497e1dd465b9fade26831b3cc58ab7.mp3str"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Shaker_Tutorial.mp3-e8497e1dd465b9fade26831b3
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

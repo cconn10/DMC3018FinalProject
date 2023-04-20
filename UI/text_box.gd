@@ -51,7 +51,8 @@ func show_textbox():
 	textbox_container.show()
 	
 func queue_text(next_text):
-	text_queue.push_back(next_text)
+	if !isVisible:
+		text_queue.push_back(next_text)
 	
 func display_text():
 	var next_text = text_queue.pop_front()
