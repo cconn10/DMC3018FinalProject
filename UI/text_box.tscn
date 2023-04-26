@@ -56,4 +56,5 @@ autowrap_mode = 3
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "Press enter to continue"
+text = "Press enter to continue
+Press escape to quit"

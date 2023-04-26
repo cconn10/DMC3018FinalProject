@@ -1,0 +1,100 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxkt0q611jaxd"]
+
+[ext_resource type="Script" path="res://UI/Interface.gd" id="1_qndgg"]
+
+[node name="Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qndgg")
+
+[node name="Tab_Overlay" type="Panel" parent="."]
+z_index = 1000
+offset_left = -296.0
+offset_top = 55.0
+offset_right = -192.0
+offset_bottom = 68.0
+
+[node name="tab_open" type="Label" parent="Tab_Overlay"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 196.0
+offset_bottom = 26.0
+scale = Vector2(0.5, 0.5)
+text = "Press TAB to see controls"
+
+[node name="Control_Overlay" type="Panel" parent="."]
+visible = false
+z_index = 100
+offset_left = -303.0
+offset_top = 46.0
+offset_right = 305.0
+offset_bottom = 355.0
+
+[node name="tab_close" type="Label" parent="Control_Overlay"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 35.0
+scale = Vector2(0.5, 0.5)
+text = "Press TAB to close"
+
+[node name="Overworld" type="Label" parent="Control_Overlay"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 55.0
+offset_right = 230.0
+offset_bottom = 81.0
+scale = Vector2(0.8, 0.8)
+text = "Overworld"
+
+[node name="Rhythm" type="Label" parent="Control_Overlay"]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 55.0
+offset_right = 474.0
+offset_bottom = 81.0
+scale = Vector2(0.8, 0.8)
+text = "Rhythm
+"
+
+[node name="Controls" type="Label" parent="Control_Overlay"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 23.0
+offset_right = 326.0
+offset_bottom = 49.0
+text = "Controls"
+
+[node name="OverworldControls" type="Label" parent="Control_Overlay"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 75.0
+offset_right = 291.0
+offset_bottom = 205.0
+scale = Vector2(0.6, 0.6)
+text = "Up: W
+Left: A
+Down: S
+Right: D
+Interact: Space"
+horizontal_alignment = 3
+
+[node name="RhythmControls" type="Label" parent="Control_Overlay"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 76.0
+offset_right = 549.0
+offset_bottom = 206.0
+scale = Vector2(0.6, 0.6)
+text = "Left: A
+Center-Left: S
+Center: Space
+Center-Right: K
+Right: L
+Quit: Esc"
+horizontal_alignment = 3
