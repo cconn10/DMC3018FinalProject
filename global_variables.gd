@@ -10,7 +10,8 @@ var tutorials_completed = []
 var overworld_music_volume
 var overworld_music_path = ""
 
-var player_position = [234, -114]
+var player_position = [0, -200]
+var previous_scene = ""
 
 var textBoxVisible = false;
 
@@ -36,7 +37,7 @@ func goto_scene(path):
 func _deferred_goto_scene(path):
 	# It is now safe to remove the current scene
 	current_scene.free()
-
+	
 	# Load the new scene.
 	var s = ResourceLoader.load(path)
 

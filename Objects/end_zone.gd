@@ -8,6 +8,8 @@ var lane_2_pos = 472;
 var lane_3_pos = 504;
 var lane_4_pos = 536;
 
+var y_limit = 408;
+
 var perfect = false
 var good = false
 var okay = false
@@ -43,8 +45,6 @@ func target_check(l):
 			else:
 				get_parent().increment_score(0)
 			_reset()
-	else:
-		get_parent().increment_score(0)
 
 
 func check_lane(area):
@@ -77,6 +77,7 @@ func _on_okay_area_entered(area):
 func _on_okay_area_exited(area):
 	if area.is_in_group("note"):
 		okay = false
+		get_parent().increment_score(0)
 	
 func _on_good_area_entered(area):
 	if area.is_in_group("note"):
