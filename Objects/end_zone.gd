@@ -32,7 +32,6 @@ func _unhandled_input(event):
 func target_check(l):
 	if current_note != null:
 		if lane == l:
-			print("LANE SET")
 			if perfect:
 				current_note.destroy()
 				get_parent().increment_score(300)

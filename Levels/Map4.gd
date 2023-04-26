@@ -17,16 +17,17 @@ func _ready():
 	player.position.x = GlobalVariables.player_position[0]
 	player.position.y = GlobalVariables.player_position[1]
 
-	if GlobalVariables.tutorials_completed.has(GlobalVariables.SONG.FINAL_TUTORIAL and !GlobalVariables.tutorials_completed.has(GlobalVariables.SONG.BOSS_BATTLE)):
+	if GlobalVariables.tutorials_completed.has(GlobalVariables.SONG.FINAL_TUTORIAL) and !GlobalVariables.tutorials_completed.has(GlobalVariables.SONG.BOSS_BATTLE):
 		$StaticBody2D/DrumCollision.disabled = true
 		drumPiece.hide()
 		silence.show()
 		GlobalVariables.overworld_music_path = ""
 	if GlobalVariables.tutorials_completed.has(GlobalVariables.SONG.BOSS_BATTLE):
+		drumPiece.hide()
 		silence.hide()
+		GlobalVariables.overworld_music_path = "res://Music/Overworld_With_Ukelele.mp3"
 		open_text_box(["You've fought them back this time, but they'll just keep coming back and attacking other villages.", "You can't beat them alone... you need some friends."])
 		open_text_box(["Thanks for playing!!!"])
-		GlobalVariables.overworld_music_path = "res://Music/Overworld_With_Ukelele.mp3"
 		
 		
 	
@@ -65,7 +66,6 @@ func enter_rhythm(song_path, song_enum):
 	
 func open_text_box(texts):
 	for text in texts:
-		print(text)
 		text_box.queue_text(text)
 	player.can_move = false
 

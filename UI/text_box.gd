@@ -60,7 +60,6 @@ func show_textbox():
 func queue_text(next_text):
 	if !isVisible:
 		text_queue.push_back(next_text)
-		print(text_queue)
 	
 func display_text():
 	var next_text = text_queue.pop_front()

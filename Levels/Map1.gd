@@ -30,7 +30,6 @@ func _ready():
 func _process(delta):
 	playerPos = player.position
 	drumPiecePos = drumPiece.position
-	print(playerPos.y > 270)
 	if playerPos.y > 270:
 		GlobalVariables.player_position = [-400, -240]
 		GlobalVariables.goto_scene("res://Levels/Map2.tscn")

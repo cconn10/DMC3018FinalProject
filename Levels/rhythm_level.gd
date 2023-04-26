@@ -210,8 +210,6 @@ func _ready():
 	lastbeat = 0
 	crotchet = 60 / bpm
 	
-	print("foo")
-	
 	$Conductor.connect("finished", _on_conductor_finished)
 	
 	match GlobalVariables.current_song:
@@ -236,7 +234,6 @@ func _ready():
 			bpm = 120
 			currentSong = finalSong
 			
-	print(currentSong)
 	text_box.queue_text("Press Enter to Start Level...")
 
 func _physics_process(_delta):

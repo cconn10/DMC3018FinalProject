@@ -30,7 +30,6 @@ func _ready():
 func _process(delta):
 	playerPos = player.position
 	drumPiecePos = drumPiece.position
-	print(playerPos)
 	if playerPos.y < -417:
 		GlobalVariables.player_position = [-30, 255]
 		GlobalVariables.goto_scene("res://Levels/Map1.tscn")
@@ -53,7 +52,6 @@ func enter_rhythm(song_path, song_enum):
 	
 func open_text_box(texts):
 	for text in texts:
-		print(text)
 		text_box.queue_text(text)
 	player.can_move = false
 

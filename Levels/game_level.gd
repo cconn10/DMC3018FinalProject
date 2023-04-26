@@ -92,7 +92,6 @@ func enter_rhythm(song_path, song_enum):
 	
 func open_text_box(texts):
 	for text in texts:
-		print(text)
 		text_box.queue_text(text)
 	player.can_move = false
 
