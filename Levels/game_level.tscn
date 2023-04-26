@@ -795,12 +795,108 @@ script = ExtResource("1_ko6j2")
 
 [node name="PlayerCat" parent="." instance=ExtResource("1_5kxwu")]
 y_sort_enabled = true
-position = Vector2(232, -116)
+position = Vector2(1820, -157)
 up_direction = Vector2(0, 1)
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCat"]
+[node name="Camera2D" type="Camera2D" parent="PlayerCat"]
 position = Vector2(2, 2)
-remote_path = NodePath("../../Camera2D")
+zoom = Vector2(2, 2)
+limit_left = 1525
+limit_top = -300
+limit_right = 2118
+limit_bottom = 299
+drag_vertical_enabled = true
+drag_left_margin = 0.0
+drag_right_margin = 0.0
+editor_draw_limits = true
+
+[node name="Tab_Overlay" type="Panel" parent="PlayerCat/Camera2D"]
+z_index = 1000
+offset_left = -296.0
+offset_top = -145.0
+offset_right = -192.0
+offset_bottom = -132.0
+
+[node name="tab_open" type="Label" parent="PlayerCat/Camera2D/Tab_Overlay"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 196.0
+offset_bottom = 26.0
+scale = Vector2(0.5, 0.5)
+text = "Press TAB to see controls"
+
+[node name="Control_Overlay" type="Panel" parent="PlayerCat/Camera2D"]
+visible = false
+z_index = 100
+offset_left = -303.0
+offset_top = -154.0
+offset_right = 305.0
+offset_bottom = 155.0
+
+[node name="tab_close" type="Label" parent="PlayerCat/Camera2D/Control_Overlay"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 35.0
+scale = Vector2(0.5, 0.5)
+text = "Press TAB to close"
+
+[node name="Overworld" type="Label" parent="PlayerCat/Camera2D/Control_Overlay"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 55.0
+offset_right = 230.0
+offset_bottom = 81.0
+scale = Vector2(0.8, 0.8)
+text = "Overworld"
+
+[node name="Rhythm" type="Label" parent="PlayerCat/Camera2D/Control_Overlay"]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 55.0
+offset_right = 474.0
+offset_bottom = 81.0
+scale = Vector2(0.8, 0.8)
+text = "Rhythm
+"
+
+[node name="Controls" type="Label" parent="PlayerCat/Camera2D/Control_Overlay"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 23.0
+offset_right = 326.0
+offset_bottom = 49.0
+text = "Controls"
+
+[node name="OverworldControls" type="Label" parent="PlayerCat/Camera2D/Control_Overlay"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 75.0
+offset_right = 291.0
+offset_bottom = 205.0
+scale = Vector2(0.6, 0.6)
+text = "Up: W
+Left: A
+Down: S
+Right: D
+Interact: Space"
+horizontal_alignment = 3
+
+[node name="RhythmControls" type="Label" parent="PlayerCat/Camera2D/Control_Overlay"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 76.0
+offset_right = 549.0
+offset_bottom = 206.0
+scale = Vector2(0.6, 0.6)
+text = "Left: A
+Center-Left: S
+Center: Space
+Center-Right: K
+Right: L
+Quit: Esc"
+horizontal_alignment = 3
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ol84c")
@@ -829,10 +925,6 @@ layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(-327656, 262149, 0, -262120, 262149, 1, -196584, 262149, 2, -131048, 262149, 3, -65512, 262149, 4, -327655, 327685, 0, -262119, 327685, 1, -196583, 327685, 2, -131047, 327685, 3, -65511, 327685, 4, -327654, 327685, 0, -262118, 327685, 1, -196582, 327685, 2, -131046, 327685, 3, -65510, 327685, 4, -327653, 327685, 0, -262117, 327685, 1, -196581, 327685, 2, -131045, 327685, 3, -65509, 327685, 4, -327652, 327685, 0, -262116, 327685, 1, -196580, 327685, 2, -131044, 327685, 3, -65508, 327685, 4, -327651, 327685, 0, -262115, 327685, 1, -196579, 327685, 2, -131043, 327685, 3, -65507, 327685, 4, -327650, 393221, 0, -262114, 393221, 1, -196578, 393221, 2, -131042, 393221, 3, -65506, 393221, 4, -393215, 262149, 0, -327679, 262149, 1, -262143, 262149, 2, -196607, 262149, 3, -131071, 262149, 4, -393214, 327685, 0, -327678, 327685, 1, -262142, 327685, 2, -196606, 327685, 3, -131070, 327685, 4, -393213, 327685, 0, -327677, 327685, 1, -262141, 327685, 2, -196605, 327685, 3, -131069, 327685, 4, -393212, 327685, 0, -327676, 327685, 1, -262140, 327685, 2, -196604, 327685, 3, -131068, 327685, 4, -393211, 327685, 0, -327675, 327685, 1, -262139, 327685, 2, -196603, 327685, 3, -131067, 327685, 4, -393210, 327685, 0, -327674, 327685, 1, -262138, 327685, 2, -196602, 327685, 3, -131066, 327685, 4, -393209, 393221, 0, -327673, 393221, 1, -262137, 393221, 2, -196601, 393221, 3, -131065, 393221, 4, -851957, 262149, 0, -786421, 262149, 1, -720885, 262149, 2, -655349, 262149, 3, -589813, 262149, 4, -851956, 327685, 0, -786420, 327685, 1, -720884, 327685, 2, -655348, 327685, 3, -589812, 327685, 4, -851955, 327685, 0, -786419, 327685, 1, -720883, 327685, 2, -655347, 327685, 3, -589811, 327685, 4, -851954, 327685, 0, -786418, 327685, 1, -720882, 327685, 2, -655346, 327685, 3, -589810, 327685, 4, -851953, 327685, 0, -786417, 327685, 1, -720881, 327685, 2, -655345, 327685, 3, -589809, 327685, 4, -851952, 327685, 0, -786416, 327685, 1, -720880, 327685, 2, -655344, 327685, 3, -589808, 327685, 4, -851951, 393221, 0, -786415, 393221, 1, -720879, 393221, 2, -655343, 393221, 3, -589807, 393221, 4, 65548, 262149, 0, 131084, 262149, 1, 196620, 262149, 2, 262156, 262149, 3, 327692, 262149, 4, 65549, 327685, 0, 131085, 327685, 1, 196621, 327685, 2, 262157, 327685, 3, 327693, 327685, 4, 65550, 327685, 0, 131086, 327685, 1, 196622, 327685, 2, 262158, 327685, 3, 327694, 327685, 4, 65551, 327685, 0, 131087, 327685, 1, 196623, 327685, 2, 262159, 327685, 3, 327695, 327685, 4, 65552, 327685, 0, 131088, 327685, 1, 196624, 327685, 2, 262160, 327685, 3, 327696, 327685, 4, 65553, 327685, 0, 131089, 327685, 1, 196625, 327685, 2, 262161, 327685, 3, 327697, 327685, 4, 65554, 393221, 0, 131090, 393221, 1, 196626, 393221, 2, 262162, 393221, 3, 327698, 393221, 4)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(234, -114)
-zoom = Vector2(3, 3)
 
 [node name="Cow1" parent="." instance=ExtResource("9_o2s2i")]
 position = Vector2(50, 17)
@@ -879,4 +971,5 @@ autoplay = true
 
 [node name="TextBox" parent="." instance=ExtResource("13_gkcjw")]
 
+[connection signal="force_quit" from="TextBox" to="." method="_on_text_box_force_quit"]
 [connection signal="text_finished" from="TextBox" to="." method="_on_text_box_text_finished"]

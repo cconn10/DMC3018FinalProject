@@ -1,14 +1,14 @@
 extends Node2D
 
-@onready var player = get_node("PlayerCat")
-@onready var npc1 = get_node("Cow1")
-@onready var npc2 = get_node("Cow2")
-@onready var npc3 = get_node("Cow3")
-@onready var npc4 = get_node("Cow4")
-@onready var npc5 = get_node("Cow5")
+@onready var player = get_node("Spren")
+#@onready var npc1 = get_node("Cow1")
+#@onready var npc2 = get_node("Cow2")
+#@onready var npc3 = get_node("Cow3")
+#@onready var npc4 = get_node("Cow4")
+#@onready var npc5 = get_node("Cow5")
 @onready var text_box = get_node("TextBox")
 
-@export var DISTANCE_FROM_NPC = 40
+@export var DISTANCE_FROM_NPC = 30
 
 var playerPos
 var npc1Pos
@@ -23,8 +23,6 @@ func _ready():
 	player.position.x = GlobalVariables.player_position[0]
 	player.position.y = GlobalVariables.player_position[1]
 	
-	print($AudioStreamPlayer.stream)
-	
 	var stream = $AudioStreamPlayer
 	if FileAccess.file_exists((GlobalVariables.overworld_music_path)):
 		var sfx = load(GlobalVariables.overworld_music_path)
@@ -35,11 +33,11 @@ func _ready():
 	
 func _process(delta):
 	playerPos = player.position
-	npc1Pos = npc1.position
-	npc2Pos = npc2.position
-	npc3Pos = npc3.position
-	npc4Pos = npc4.position
-	npc5Pos = npc5.position
+#	npc1Pos = npc1.position
+#	npc2Pos = npc2.position
+#	npc3Pos = npc3.position
+#	npc4Pos = npc4.position
+#	npc5Pos = npc5.position
 
 func _unhandled_input(event):
 	if event.is_action_pressed("button"):
@@ -94,6 +92,7 @@ func enter_rhythm(song_path, song_enum):
 	
 func open_text_box(texts):
 	for text in texts:
+		print(text)
 		text_box.queue_text(text)
 	player.can_move = false
 
@@ -101,4 +100,8 @@ func _on_text_box_text_finished():
 	if entering_rhythm:
 		GlobalVariables.player_position = [playerPos.x, playerPos.y]
 		GlobalVariables.goto_scene("res://Levels/rhythm_level.tscn")
+	player.can_move = true
+
+
+func _on_text_box_force_quit():
 	player.can_move = true

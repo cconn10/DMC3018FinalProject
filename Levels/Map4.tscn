@@ -1,0 +1,251 @@
+[gd_scene load_steps=21 format=3 uid="uid://bnikynrlfabc2"]
+
+[ext_resource type="Texture2D" uid="uid://5m566es52j6r" path="res://Art/Maps/Map4_base.png" id="1_c06fn"]
+[ext_resource type="Script" path="res://Levels/Map4.gd" id="1_hu4xn"]
+[ext_resource type="Texture2D" uid="uid://dg3cnu8hpm12i" path="res://Art/Maps/Map4_outer.png" id="2_wl3xt"]
+[ext_resource type="PackedScene" uid="uid://cbfcb208yyi6s" path="res://Characters/spren.tscn" id="4_cst5n"]
+[ext_resource type="Script" path="res://Levels/CanvasLayer.gd" id="5_3m5td"]
+[ext_resource type="Texture2D" uid="uid://dob1cicwaoj4y" path="res://Art/BaddieSymbol.PNG" id="6_loryg"]
+[ext_resource type="PackedScene" uid="uid://cwx63b6pq552y" path="res://UI/text_box.tscn" id="6_qlul0"]
+[ext_resource type="Texture2D" uid="uid://dg0y2xh35ioqm" path="res://Art/Cloth.PNG" id="7_g1r6n"]
+[ext_resource type="Texture2D" uid="uid://qfru502a3kvh" path="res://Art/Baddie.PNG" id="8_7p33g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0pyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxi6j"]
+resource_local_to_scene = true
+size = Vector2(2149.5, 1294.12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yp8tq"]
+radius = 29.0186
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odhrk"]
+size = Vector2(96.3754, 621.001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d4yo"]
+size = Vector2(558.501, 133.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_823ih"]
+size = Vector2(91.0006, 75.0002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52lyt"]
+size = Vector2(60.2728, 163.974)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnwqw"]
+size = Vector2(61.0002, 58.0001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gjbh"]
+size = Vector2(554.501, 211)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me6yi"]
+size = Vector2(94.002, 444.001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4opi1"]
+size = Vector2(32.7492, 50.0002)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_hu4xn")
+
+[node name="Map4Base" type="Sprite2D" parent="."]
+scale = Vector2(0.051, 0.051)
+texture = ExtResource("1_c06fn")
+
+[node name="Map4Outer" type="Sprite2D" parent="."]
+scale = Vector2(0.051, 0.051)
+texture = ExtResource("2_wl3xt")
+
+[node name="Spren" parent="." instance=ExtResource("4_cst5n")]
+z_index = 1
+position = Vector2(-254, 137)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Spren"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 26
+position = Vector2(-254, 137)
+zoom = Vector2(2.2, 2.2)
+limit_left = -275
+limit_top = -413
+limit_right = 275
+limit_bottom = 413
+drag_vertical_enabled = true
+editor_draw_limits = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+layer = 8
+script = ExtResource("5_3m5td")
+
+[node name="Tab_Overlay" type="Panel" parent="Camera2D/CanvasLayer"]
+z_index = 1000
+offset_left = 6.0
+offset_top = 16.0
+offset_right = 110.0
+offset_bottom = 29.0
+scale = Vector2(2, 2)
+
+[node name="tab_open" type="Label" parent="Camera2D/CanvasLayer/Tab_Overlay"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 199.0
+offset_bottom = 26.0
+scale = Vector2(0.5, 0.5)
+text = "Press TAB to see controls"
+
+[node name="Control_Overlay" type="Panel" parent="Camera2D/CanvasLayer"]
+visible = false
+z_index = 100
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 606.0
+offset_bottom = 307.0
+scale = Vector2(2, 2)
+
+[node name="tab_close" type="Label" parent="Camera2D/CanvasLayer/Control_Overlay"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 35.0
+scale = Vector2(0.5, 0.5)
+text = "Press TAB to close"
+
+[node name="Overworld" type="Label" parent="Camera2D/CanvasLayer/Control_Overlay"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 55.0
+offset_right = 230.0
+offset_bottom = 81.0
+scale = Vector2(0.8, 0.8)
+text = "Overworld"
+
+[node name="Rhythm" type="Label" parent="Camera2D/CanvasLayer/Control_Overlay"]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 55.0
+offset_right = 474.0
+offset_bottom = 81.0
+scale = Vector2(0.8, 0.8)
+text = "Rhythm
+"
+
+[node name="Controls" type="Label" parent="Camera2D/CanvasLayer/Control_Overlay"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 23.0
+offset_right = 326.0
+offset_bottom = 49.0
+text = "Controls"
+
+[node name="OverworldControls" type="Label" parent="Camera2D/CanvasLayer/Control_Overlay"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 75.0
+offset_right = 291.0
+offset_bottom = 205.0
+scale = Vector2(0.6, 0.6)
+text = "Up: W
+Left: A
+Down: S
+Right: D
+Interact: Space"
+horizontal_alignment = 3
+
+[node name="RhythmControls" type="Label" parent="Camera2D/CanvasLayer/Control_Overlay"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 76.0
+offset_right = 549.0
+offset_bottom = 206.0
+scale = Vector2(0.6, 0.6)
+text = "Left: A
+Center-Left: S
+Center: Space
+Center-Right: K
+Right: L
+Quit: Esc"
+horizontal_alignment = 3
+
+[node name="Spooky_Darkness" type="Panel" parent="Camera2D/CanvasLayer"]
+visible = false
+z_index = 100
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 606.0
+offset_bottom = 307.0
+scale = Vector2(2, 2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_e0pyj")
+
+[node name="BaddieSymbol" type="Sprite2D" parent="Camera2D/CanvasLayer/Spooky_Darkness"]
+position = Vector2(305.5, 152.5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_loryg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[node name="TextBox" parent="." instance=ExtResource("6_qlul0")]
+
+[node name="Cloth" type="Sprite2D" parent="."]
+position = Vector2(-30, -199)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("7_g1r6n")
+
+[node name="Baddie" type="Sprite2D" parent="."]
+position = Vector2(-28, -302)
+scale = Vector2(0.051, 0.051)
+texture = ExtResource("8_7p33g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(515.998, 2)
+scale = Vector2(0.999998, 0.999998)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-376.81, -37.0001)
+scale = Vector2(0.051, 0.051)
+shape = SubResource("RectangleShape2D_nxi6j")
+
+[node name="DrumCollision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-549.999, -201)
+shape = SubResource("CircleShape2D_yp8tq")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(-283.811, -98.5002)
+shape = SubResource("RectangleShape2D_odhrk")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(-513.249, -348.563)
+shape = SubResource("RectangleShape2D_8d4yo")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(-651.499, -105.5)
+shape = SubResource("RectangleShape2D_823ih")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-544.999, -299.001)
+rotation = -3.14159
+scale = Vector2(1.08117, 0.976237)
+shape = SubResource("RectangleShape2D_52lyt")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-670.499, -166)
+shape = SubResource("RectangleShape2D_dnwqw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-517.249, 308.501)
+shape = SubResource("RectangleShape2D_3gjbh")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-740.999, -197)
+shape = SubResource("RectangleShape2D_me6yi")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-684.374, -218)
+shape = SubResource("RectangleShape2D_4opi1")
+
+[connection signal="force_quit" from="TextBox" to="." method="_on_text_box_force_quit"]
+[connection signal="text_finished" from="TextBox" to="." method="_on_text_box_text_finished"]

@@ -5,10 +5,13 @@ extends Node2D
 @onready var rb_state_machine = $"L Key"/AnimationTree.get("parameters/playback")
 @onready var rt_state_machine = $"K Key"/AnimationTree.get("parameters/playback")
 @onready var b_state_machine = $"Space"/AnimationTree.get("parameters/playback")
+@onready var text_box = get_node("TextBox")
 
 var total_score = 0
 var best_combo = 0
 var current_combo = 0
+
+var score_threshold 
 
 #00001 (1) = RB
 #00010 (2) = RT
@@ -207,21 +210,34 @@ func _ready():
 	lastbeat = 0
 	crotchet = 60 / bpm
 	
+	print("foo")
+	
 	$Conductor.connect("finished", _on_conductor_finished)
 	
 	match GlobalVariables.current_song:
 		GlobalVariables.SONG.DRUM_TUTORIAL:
+			$Conductor.bpm = 180
+			bpm = 180
 			currentSong = drumTutorial
 		GlobalVariables.SONG.SHAKE_TUTORIAL:
+			$Conductor.bpm = 180
+			bpm = 180
 			currentSong = shakeTutorial
 		GlobalVariables.SONG.TAP_TUTORIAL:
+			$Conductor.bpm = 180
+			bpm = 180
 			currentSong = tapTutorial
 		GlobalVariables.SONG.FINAL_TUTORIAL:
+			$Conductor.bpm = 180
+			bpm = 180
 			currentSong = finalTutorial
 		GlobalVariables.SONG.BOSS_BATTLE:
+			$Conductor.bpm = 120
+			bpm = 120
 			currentSong = finalSong
-	
-	$Conductor.play_with_beat_offset(6)
+			
+	print(currentSong)
+	text_box.queue_text("Press Enter to Start Level...")
 
 func _physics_process(_delta):
 	button_animation("leftbumper", lb_state_machine)
@@ -244,33 +260,35 @@ func _on_conductor_beat(position):
 		
 	
 func _on_conductor_finished():
-	GlobalVariables.tutorials_completed.push_back(GlobalVariables.current_song)
-	match len(GlobalVariables.tutorials_completed):
-		1:
-			GlobalVariables.overworld_music_path = "res://Music/Overworld_Without_Ukelele.mp3"
-			GlobalVariables.overworld_music_volume = -25
-		2:
-			GlobalVariables.overworld_music_volume = -20
-		3:
-			GlobalVariables.overworld_music_volume = -15
-		4:
-			GlobalVariables.overworld_music_volume = -10
-		5:
-			GlobalVariables.overworld_music_volume = 0
-			GlobalVariables.overworld_music_path = "res://Music/Overworld_With_Ukelele.mp3"
-			
-	GlobalVariables.goto_scene("res://Levels/game_level.tscn")
+	score_threshold = get_score_threshold()
+	if(total_score > score_threshold):
+		GlobalVariables.tutorials_completed.push_back(GlobalVariables.current_song)
+		match len(GlobalVariables.tutorials_completed):
+			1:
+				GlobalVariables.overworld_music_path = "res://Music/Overworld_Without_Ukelele.mp3"
+				GlobalVariables.overworld_music_volume = -25
+			2:
+				GlobalVariables.overworld_music_volume = -20
+			3:
+				GlobalVariables.overworld_music_volume = -15
+			4:
+				GlobalVariables.overworld_music_volume = -10
+			5:
+				GlobalVariables.overworld_music_volume = 0
+				GlobalVariables.overworld_music_path = "res://Music/Overworld_With_Ukelele.mp3"
+				
+		text_box.queue_text("You've completed the song!")
+	else:
+		text_box.queue_text("You needed " + str(score_threshold) + " points to pass... Try again.")
+	
+	
 
 func _on_conductor_measure(position):
 	pass
-#	if position == 1:
-#		_spawn_notes(spawn_1_beat)
-#	elif position == 2:
-#		_spawn_notes(spawn_2_beat)
-#	elif position == 3:
-#		_spawn_notes(spawn_3_beat)
-#	elif position == 4:
-#		_spawn_notes(spawn_4_beat)
+	
+func get_score_threshold():
+	var beats = currentSong.filter(func(beat): return beat != 0).size()
+	return (beats * 200) * 0.75
 
 func _spawn_notes(to_spawn):
 	while to_spawn > 0:
@@ -297,7 +315,6 @@ func increment_score(score):
 	if score > 0:
 		current_combo += 1
 	else:
-		print("NOTE MISSED")
 		current_combo = 0
 		
 	if current_combo > best_combo:
@@ -311,4 +328,16 @@ func increment_score(score):
 		
 func _unhandled_input(event):
 	if event.is_action_pressed("Force_quit"):
-		GlobalVariables.goto_scene("res://Levels/game_level.tscn")
+		
+		GlobalVariables.goto_scene(GlobalVariables.previous_scene)
+
+
+func _on_text_box_text_finished():
+	if song_position_in_beats > 0:
+		GlobalVariables.goto_scene(GlobalVariables.previous_scene)
+	else:
+		$Conductor.play_with_beat_offset(6)
+
+
+func _on_text_box_force_quit():
+	GlobalVariables.goto_scene(GlobalVariables.previous_scene)

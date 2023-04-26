@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2yboski2o3ey"]
+[gd_scene load_steps=25 format=3 uid="uid://d2yboski2o3ey"]
 
 [ext_resource type="Script" path="res://Levels/rhythm_level.gd" id="1_yvrco"]
 [ext_resource type="Texture2D" uid="uid://g4in6e2xwy62" path="res://Art/Button.png" id="2_lbsxk"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dinq3y1dj7v2a" path="res://Buttons/LeftBumper.tscn" id="13_atkrg"]
 [ext_resource type="PackedScene" uid="uid://dku7t3sn3yjgx" path="res://Objects/end_zone.tscn" id="14_35psj"]
 [ext_resource type="PackedScene" uid="uid://jgswppibkwg5" path="res://Music/conductor.tscn" id="15_hb51j"]
+[ext_resource type="PackedScene" uid="uid://cwx63b6pq552y" path="res://UI/text_box.tscn" id="15_w4fuq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ce1ot"]
 texture = ExtResource("2_lbsxk")
@@ -198,40 +199,44 @@ position = Vector2(504, 392)
 texture_filter = 1
 position = Vector2(536, 392)
 
+[node name="TextBox" parent="." instance=ExtResource("15_w4fuq")]
+
 [node name="Conductor" parent="." instance=ExtResource("15_hb51j")]
-volume_db = -8.32
+volume_db = -20.425
 
 [node name="Exit" type="Label" parent="."]
 offset_left = 430.0
-offset_top = 217.0
+offset_top = 222.0
 offset_right = 638.0
-offset_bottom = 243.0
+offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
 text = "To exit early, press ESC key"
 
 [node name="Score" type="Label" parent="."]
 offset_left = 282.0
-offset_top = 212.0
-offset_right = 334.0
-offset_bottom = 238.0
+offset_top = 222.0
+offset_right = 343.0
+offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
 text = "Score: 0"
 
 [node name="CurrentCombo" type="Label" parent="."]
 offset_left = 282.0
-offset_top = 222.0
-offset_right = 343.0
-offset_bottom = 248.0
+offset_top = 232.0
+offset_right = 419.0
+offset_bottom = 258.0
 scale = Vector2(0.4, 0.4)
 text = "Current Combo: 0"
 
 [node name="BestCombo" type="Label" parent="."]
 offset_left = 282.0
-offset_top = 232.0
+offset_top = 242.0
 offset_right = 406.0
-offset_bottom = 258.0
+offset_bottom = 268.0
 scale = Vector2(0.4, 0.4)
 text = "Best Combo: 0"
 
+[connection signal="force_quit" from="TextBox" to="." method="_on_text_box_force_quit"]
+[connection signal="text_finished" from="TextBox" to="." method="_on_text_box_text_finished"]
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_conductor_measure"]
