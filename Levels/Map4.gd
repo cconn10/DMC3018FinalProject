@@ -23,6 +23,7 @@ func _ready():
 		silence.show()
 		GlobalVariables.overworld_music_path = ""
 	if GlobalVariables.tutorials_completed.has(GlobalVariables.SONG.BOSS_BATTLE):
+		$StaticBody2D/DrumCollision.disabled = true
 		drumPiece.hide()
 		silence.hide()
 		GlobalVariables.overworld_music_path = "res://Music/Overworld_With_Ukelele.mp3"
